@@ -1,19 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { App } from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <div id='div1'>
-    <h1>Caramba!</h1>
-
-    <div id='id2'>
-      <span>Hello World</span>
-      <button type='button' onClick={() => console.log('click')}>
-        Button
-      </button>
-    </div>
-  </div>
-);
+root.render(<App />);
 
 // root.render(
 //   React.createElement('div', {
