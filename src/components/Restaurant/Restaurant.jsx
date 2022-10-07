@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 import { Menu } from '../Menu/Menu';
+import { Reviews } from '../Reviews/Reviews';
 
 export const Restaurant = ({ restaurant }) => {
   return (
@@ -9,7 +10,9 @@ export const Restaurant = ({ restaurant }) => {
       {restaurant.menu && (
         <Menu products={restaurant.menu} className={styles.menu} />
       )}
-      <div>RestaurantReviews</div>
+      <div>
+        {restaurant.reviews && <Reviews reviews={restaurant.reviews} />}
+      </div>
     </div>
   );
 };

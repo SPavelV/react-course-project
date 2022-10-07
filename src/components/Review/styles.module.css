@@ -1,0 +1,9 @@
+.root {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.user {
+  margin-bottom: 10;
+}
