@@ -5,8 +5,10 @@ import { Tabs } from '../../components/Tabs/Tabs';
 import styles from './styles.module.css';
 
 export const RestaurantsPage = ({ restaurants }) => {
+  console.log('render RestaurantsPage');
+
   console.log('restaurants', restaurants);
-  return (
+  return ( 
     <Layout>
       <div className={styles.container}>
         <Tabs />

@@ -4,6 +4,8 @@ import classnames from 'classnames';
 import { Product } from '../Product/Product';
 
 export const Menu = ({ products, className, isTouch }) => {
+  console.log('render menu');
+
   return (
     <div
       className={classnames(styles.root, className, {

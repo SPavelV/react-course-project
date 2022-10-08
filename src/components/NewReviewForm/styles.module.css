@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.formElement {
+  display: flex;
+  flex-direction: column;
+}
+
+.formElement:not(:last-child) {
+  margin-bottom: 20px;
+}

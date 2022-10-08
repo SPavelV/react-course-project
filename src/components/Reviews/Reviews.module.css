@@ -1,4 +1,9 @@
 .root {
   display: flex;
   flex-direction: column;
+  padding-left: 20px;
+}
+
+.review:not(:last-child) {
+  margin-bottom: 10px;
 }
