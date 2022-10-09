@@ -7,3 +7,22 @@
 .user {
   margin-bottom: 10;
 }
+
+.star {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('./img//star-gold.svg');
+  width: 20px;
+  height: 20px;
+}
+
+.starComponent {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  color: orange;
+}
+.starComponent:hover {
+  color: red;
+}
