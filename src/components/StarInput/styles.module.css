@@ -10,6 +10,10 @@
   height: 40px;
 }
 
+.star:hover:not(.starGold) {
+  color: rgb(130, 126, 126);
+}
+
 .star + .star {
   margin-left: 5px;
 }

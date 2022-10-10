@@ -56,6 +56,7 @@ export const NewReviewForm = ({ className }) => {
       <div className={styles.formElement}>
         <span>StarInput</span>
         <StarInput
+          value={form.rating}
           onChange={(rating) => {
             dispatch({ type: FORM_ACTIONS.setRating, payload: rating });
           }}
