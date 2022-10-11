@@ -10,6 +10,7 @@ export const Reviews = ({ reviews, className }) => {
   if (reviews.length === 0) {
     return <div>No reviews</div>;
   }
+
   return (
     <div className={classnames(styles.root, className)}>
       <div>
