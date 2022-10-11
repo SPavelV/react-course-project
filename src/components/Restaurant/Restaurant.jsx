@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
-import { Menu } from '../Menu/Menu';
-import { Reviews } from '../Reviews/Reviews';
+import { Menu, MenuWithMemo } from '../Menu/Menu';
+import { Reviews, ReviewsWithMemo } from '../Reviews/Reviews';
 
 export const Restaurant = ({ restaurant }) => {
   const [count, setCount] = useState(0);
@@ -13,10 +13,10 @@ export const Restaurant = ({ restaurant }) => {
       <button onClick={() => setCount(count + 1)}>Rerender</button>
 
       {restaurant.menu && (
-        <Menu products={restaurant.menu} className={styles.menu} />
+        <MenuWithMemo products={restaurant.menu} className={styles.menu} />
       )}
       <div>
-        {restaurant.reviews && <Reviews reviews={restaurant.reviews} />}
+        {restaurant.reviews && <ReviewsWithMemo  reviews={restaurant.reviews} />}
       </div>
     </div>
   );

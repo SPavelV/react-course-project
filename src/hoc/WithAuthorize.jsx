@@ -9,10 +9,10 @@ export const WithAuthorize = ({
     const isAuth = false;
 
     if (isAuth) {
-      WrappedComponentWithAuthorization.displayName = 'ComponentAuthorized';
+      WrappedComponentWithAuthorization.displayName = `WithAuthorization${ComponentAuthorized.name}`;
       return <ComponentAuthorized {...props} />;
     } else {
-      WrappedComponentWithAuthorization.displayName = 'ComponentUnAuthorized';
+      WrappedComponentWithAuthorization.displayName = `WithAuthorization${ComponentUnAuthorized.name}`;
       return <ComponentUnAuthorized {...props} />;
     }
   };

@@ -29,8 +29,6 @@ export const NewReviewForm = ({ className }) => {
     rating: 0,
   });
 
-  console.log('form :>> ', form);
-
   return (
     <div className={classnames(styles.root, className)}>
       <div className={styles.formElement}>

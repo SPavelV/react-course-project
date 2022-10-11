@@ -7,8 +7,8 @@ import styles from './styles.module.css';
 export const RestaurantsPage = ({ restaurants }) => {
   console.log('render RestaurantsPage');
 
-  console.log('restaurants', restaurants);
-  return ( 
+  // console.log('restaurants', restaurants);
+  return (
     <Layout>
       <div className={styles.container}>
         <Tabs />

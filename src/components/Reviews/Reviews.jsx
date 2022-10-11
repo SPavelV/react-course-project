@@ -27,3 +27,5 @@ export const Reviews = ({ reviews, className }) => {
     </div>
   );
 };
+
+export const ReviewsWithMemo = React.memo(Reviews);

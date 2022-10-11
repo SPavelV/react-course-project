@@ -24,3 +24,5 @@ export const Menu = ({ products, className, isTouch }) => {
     </div>
   );
 };
+
+export const MenuWithMemo = React.memo(Menu);
