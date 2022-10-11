@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.css';
 import classnames from 'classnames';
-import { Product } from '../Product/Product';
+import { ProductWithAuthorize } from '../Product/ProductWithAuthorize';
 
 export const Menu = ({ products, className, isTouch }) => {
   console.log('render menu');
@@ -14,7 +14,7 @@ export const Menu = ({ products, className, isTouch }) => {
     >
       {products &&
         products.map((product) => (
-          <Product
+          <ProductWithAuthorize
             key={product.id}
             name={product.name}
             price={product.price}
