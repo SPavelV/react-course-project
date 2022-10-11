@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
 
+import { veryDifficultCalculation } from './utils/memo-function';
+
+veryDifficultCalculation({ a: 12, b: 5 });
+veryDifficultCalculation({ a: 12, b: 5 });
+veryDifficultCalculation({ a: 12, b: 5 });
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 
