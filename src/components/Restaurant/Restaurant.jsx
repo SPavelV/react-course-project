@@ -11,9 +11,7 @@ export const Restaurant = ({ restaurant }) => {
       restaurant.reviews.length
   );
 
-  console.log('average', average);
-
-  return (
+   return (
     <div className={styles.container}>
       <div>{restaurant.name}</div>
       {average && <div>Average: {average}</div>}

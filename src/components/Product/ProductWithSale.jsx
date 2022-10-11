@@ -1,16 +1,14 @@
-import React, { useEffect, useMemo } from 'react';
-import styles from './Product.module.css';
+import React, { useMemo, useContext } from 'react';
+import styles from './styles.module.css';
 import classnames from 'classnames';
 import { useCount } from '../../hooks/useCount';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export const ProductWithSale = ({ name, price, className }) => {
-  // fetch sale info
-  useEffect(() => {}, []);
-
+  const { theme } = useContext(ThemeContext);
   let { count, decrement, increment } = useCount(0);
 
   const totalPrice = useMemo(() => {
-    console.log('totalPrice :>> ', count * price);
     return count * price;
   }, [count, price]);
 
@@ -22,11 +20,27 @@ export const ProductWithSale = ({ name, price, className }) => {
     <div className={classnames(styles.root, className)}>
       <span>{name}</span>
       <div className={styles.actions}>
-        <button onClick={decrement}>-</button>
+        <button
+          onClick={decrement}
+          className={classnames({
+            [styles.darkAction]: theme === 'dark',
+            [styles.lightAction]: theme === 'light',
+          })}
+        >
+          -
+        </button>
 
         <span>{count}</span>
 
-        <button onClick={increment}>+</button>
+        <button
+          className={classnames({
+            [styles.darkAction]: theme === 'dark',
+            [styles.lightAction]: theme === 'light',
+          })}
+          onClick={increment}
+        >
+          +
+        </button>
       </div>
       <span>{totalPrice} р.</span>
     </div>

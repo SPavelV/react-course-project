@@ -6,7 +6,7 @@ export const WithAuthorize = ({
 }) => {
   const WrappedComponentWithAuthorization = (props) => {
     // check is user authorized
-    const isAuth = false;
+    const isAuth = true;
 
     if (isAuth) {
       WrappedComponentWithAuthorization.displayName = `WithAuthorization${ComponentAuthorized.name}`;

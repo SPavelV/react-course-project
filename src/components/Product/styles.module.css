@@ -1,0 +1,18 @@
+.root {
+  display: flex;
+  align-items: center;
+}
+
+.actions {
+  margin: 0 20px 0 auto;
+}
+
+.darkAction {
+  background-color: black;
+  color: white;
+}
+
+.lightAction {
+  background-color: #fff;
+  color: black;
+}
