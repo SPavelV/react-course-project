@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styles from './Product.module.css';
 import classnames from 'classnames';
 import { useCount } from '../../hooks/useCount';
 
-export const Product = ({ name, className }) => {
+export const Product = ({ name, price, className }) => {
   let { count, decrement, increment } = useCount(0);
+
+  const totalPrice = useMemo(() => {
+    console.log('totalPrice :>> ', count * price);
+    return count * price;
+  }, [count, price]);
+
+  if (!name) {
+    return null;
+  }
 
   return (
     <div className={classnames(styles.root, className)}>
@@ -16,6 +25,7 @@ export const Product = ({ name, className }) => {
 
         <button onClick={increment}>+</button>
       </div>
+      <span>{totalPrice} р.</span>
     </div>
   );
 };

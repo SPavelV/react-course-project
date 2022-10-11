@@ -17,6 +17,7 @@ export const Menu = ({ products, className, isTouch }) => {
           <Product
             key={product.id}
             name={product.name}
+            price={product.price}
             className={styles.product}
           />
         ))}
