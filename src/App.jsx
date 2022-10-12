@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import { RestaurantsPage } from './pages/RestaurantsPage/RestaurantsPage';
-import { restaurants } from './constants/fixtures';
 import { ThemeContext } from './contexts/ThemeContext';
 import { Provider } from './CustomStore';
 import { store } from './store';
@@ -19,7 +18,7 @@ export const App = () => {
   return (
     <Provider store={store}>
       <ThemeContext.Provider value={themeState}>
-        <RestaurantsPage restaurants={restaurants} />
+        <RestaurantsPage />
       </ThemeContext.Provider>
     </Provider>
   );

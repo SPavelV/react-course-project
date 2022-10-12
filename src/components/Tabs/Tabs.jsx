@@ -1,5 +1,16 @@
 import React from 'react';
+import { useSelector } from '../../CustomStore';
+import { selectRestaurants } from '../../store/restaurant/selectors';
 
 export const Tabs = () => {
-  return <div>RestaurantTabs</div>;
+  const restaurants = useSelector(selectRestaurants);
+
+  if (!restaurants) return null;
+  return (
+    <div>
+      {restaurants.map(({ id, name }) => (
+        <p key={id}>{name}</p>
+      ))}
+    </div>
+  );
 };

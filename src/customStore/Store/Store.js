@@ -1,20 +1,14 @@
-const restaurantReducer = (state, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
-const rootReducer = (state = {}, action = {}) => ({
-  restaurant: restaurantReducer(state.restaurants, action),
-});
-
 class Store {
-  state = {};
+  state;
+
+  rootReducer;
 
   subscribers = {};
 
-  reducer() {}
+  constructor(rootReducer) {
+    this.rootReducer = rootReducer;
+    this.state = this.rootReducer();
+  }
 
   subscribe(key, callback) {
     if (typeof callback === 'function') {
@@ -37,13 +31,14 @@ class Store {
 
   dispatch(action) {
     this.state = this.rootReducer(this.state, action);
+    this.sendState();
   }
 }
 
 export const createStore = (() => {
   let store;
 
-  return () => {
+  return (rootReducer) => {
     if (!store) {
       store = new Store(rootReducer);
     }
