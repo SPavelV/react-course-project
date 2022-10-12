@@ -2,8 +2,8 @@ import React, { useMemo, useState } from 'react';
 import { RestaurantsPage } from './pages/RestaurantsPage/RestaurantsPage';
 import { restaurants } from './constants/fixtures';
 import { ThemeContext } from './contexts/ThemeContext';
-
-const store = {};
+import { Provider } from './CustomStore';
+import { store } from './store';
 
 export const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -17,8 +17,10 @@ export const App = () => {
   );
 
   return (
-    <ThemeContext.Provider value={themeState}>
-      <RestaurantsPage restaurants={restaurants} />
-    </ThemeContext.Provider>
+    <Provider store={store}>
+      <ThemeContext.Provider value={themeState}>
+        <RestaurantsPage restaurants={restaurants} />
+      </ThemeContext.Provider>
+    </Provider>
   );
 };
