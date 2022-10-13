@@ -1,5 +1,4 @@
-import { createStore } from '../CustomStore/Store/Store';
-
+import { createStore } from 'redux';
 import { restaurantReducer } from '../store/restaurant/reducer';
 
 const rootReducer = (state = {}, action = {}) => {

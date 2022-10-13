@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { RestaurantsPage } from './pages/RestaurantsPage/RestaurantsPage';
 import { ThemeContext } from './contexts/ThemeContext';
-import { Provider } from './CustomStore';
+import { Provider } from 'react-redux';
 import { store } from './store';
 
 export const App = () => {

@@ -1,38 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from '../../components/Layout/Layout';
 import { Restaurant } from '../../components/Restaurant/Restaurant';
 import { Tabs } from '../../components/Tabs/Tabs';
-import { useDispatch, useSelector } from '../../CustomStore';
-import { selectRestaurants } from '../../store/restaurant/selectors';
-import { addRestaurant } from '../../store/restaurant/actions';
+import { useSelector } from 'react-redux';
+import { selectRestaurantIds } from '../../store/restaurant/selectors';
 import styles from './styles.module.css';
-
-import { restaurants as mock } from '../../constants/fixtures';
-import { nanoid } from 'nanoid';
+import { RestaurantTabsContainer } from '../../containers/RestaurantTabs/RestaurantTabs';
 
 export const RestaurantsPage = () => {
-  const restaurants = useSelector(selectRestaurants);
-  const dispatch = useDispatch();
+  const [currentRestaurantId, setCurrentRestaurantId] = useState();
+  const restaurants = useSelector(selectRestaurantIds);
 
   if (!restaurants) return null;
 
   return (
     <Layout>
       <div className={styles.container}>
-        <button
-          onClick={() =>
-            dispatch(
-              addRestaurant({
-                ...mock[0],
-                id: nanoid(),
-                name: nanoid(),
-              })
-            )
-          }
-        >
-          add restaurant
-        </button>
         <Tabs />
+        <RestaurantTabsContainer />
         <Restaurant restaurant={restaurants[0]} />
       </div>
     </Layout>

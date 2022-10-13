@@ -1,0 +1,13 @@
+import React from 'react';
+import { Tab } from '../../components/Tab/Tab';
+import { useSelector } from 'react-redux';
+import { selectRestaurantById } from '../../store/restaurant/selectors';
+
+export const RestaurantTabContainer = ({ id }) => {
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, { id })
+  );
+
+  if (!restaurant) return null;
+  return <Tab name={restaurant.name} />;
+};
