@@ -1,13 +1,16 @@
 import React from 'react';
-import { Tab } from '../../components/Tab/Tab';
 import { useSelector } from 'react-redux';
+import { Restaurant } from '../../components/Restaurant/Restaurant';
 import { selectRestaurantById } from '../../store/restaurant/selectors';
 
-export const RestaurantTabContainer = ({ id, onTabSelect }) => {
+export const RestaurantContainer = ({ id }) => {
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, { id })
   );
 
-  if (!restaurant) return null;
-  return <Tab name={restaurant.name} onClick={() => onTabSelect(id)} />;
+  if (!restaurant?.name) {
+    return null;
+  }
+
+  return <Restaurant name={restaurant.name} />;
 };

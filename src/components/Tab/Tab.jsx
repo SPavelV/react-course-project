@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Tab = ({ name }) => {
-  return <div>{name}</div>;
+export const Tab = ({ name, onClick }) => {
+  return <button onClick={onClick}>{name}</button>;
 };

@@ -4,9 +4,7 @@ import { MenuWithMemo } from '../Menu/Menu';
 import { ReviewsWithMemo } from '../Reviews/Reviews';
 import { RestaurantContentTabsWithMemo } from '../RestaurantContentTabs/RestaurantContentTabs';
 
-export const Restaurant = ({ restaurant }) => {
-  const [count, setCount] = useState(0);
-
+export const Restaurant = ({ name }) => {
   // const average = Math.round(
   //   restaurant.reviews.reduce((sum, num) => (sum += num.rating), 0) /
   //     restaurant.reviews.length
@@ -14,7 +12,7 @@ export const Restaurant = ({ restaurant }) => {
 
   return (
     <div className={styles.container}>
-      <div>{restaurant.name}</div>
+      <div>{name}</div>
       <RestaurantContentTabsWithMemo />
       {/* {average && <div>Average: {average}</div>} */}
 

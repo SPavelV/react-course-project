@@ -6,18 +6,20 @@ import { useSelector } from 'react-redux';
 import { selectRestaurantIds } from '../../store/restaurant/selectors';
 import styles from './styles.module.css';
 import { RestaurantTabsContainer } from '../../containers/RestaurantTabs/RestaurantTabs';
+import { RestaurantContainer } from '../../containers/Restaurant/RestaurantContainer';
 
 export const RestaurantsPage = () => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState();
-  const restaurants = useSelector(selectRestaurantIds);
-
-  if (!restaurants) return null;
 
   return (
     <Layout>
       <div className={styles.container}>
-          <RestaurantTabsContainer />
-        <Restaurant restaurant={restaurants[0]} />
+        <RestaurantTabsContainer
+          onTabSelect={(id) => setCurrentRestaurantId(id)}
+        />
+        {!!currentRestaurantId && (
+          <RestaurantContainer id={currentRestaurantId} />
+        )}
       </div>
     </Layout>
   );
