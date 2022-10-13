@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './styles.module.css';
 import { MenuWithMemo } from '../Menu/Menu';
 import { ReviewsWithMemo } from '../Reviews/Reviews';
+import { RestaurantContentTabsWithMemo } from '../RestaurantContentTabs/RestaurantContentTabs';
 
 export const Restaurant = ({ restaurant }) => {
   const [count, setCount] = useState(0);
@@ -14,6 +15,7 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <div className={styles.container}>
       <div>{restaurant.name}</div>
+      <RestaurantContentTabsWithMemo />
       {/* {average && <div>Average: {average}</div>} */}
 
       {/* <button onClick={() => setCount(count + 1)}>Rerender</button>

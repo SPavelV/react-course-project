@@ -16,8 +16,7 @@ export const RestaurantsPage = () => {
   return (
     <Layout>
       <div className={styles.container}>
-        <Tabs />
-        <RestaurantTabsContainer />
+          <RestaurantTabsContainer />
         <Restaurant restaurant={restaurants[0]} />
       </div>
     </Layout>

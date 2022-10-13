@@ -10,7 +10,6 @@ const initialState = {
 };
 
 export const restaurantReducer = (state = initialState, action) => {
-  console.log('state :>> ', state);
   switch (action.type) {
     case RESTAURANT_ACTIONS.ADD_RESTAURANT: {
       return { restaurants: [...state.restaurants, action.payload] };
