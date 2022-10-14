@@ -3,8 +3,8 @@ import { RESTAURANT_ACTIONS } from './actions';
 
 const initialState = {
   ids: normalizedRestaurants.map((item) => item.id),
-  entities: normalizedRestaurants.reduce((acc, item) => {
-    acc[item.id] = item;
+  entities: normalizedRestaurants.reduce((acc, current) => {
+    acc[current.id] = current;
     return acc;
   }, {}),
 };

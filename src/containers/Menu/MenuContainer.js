@@ -8,7 +8,6 @@ export const MenuContainer = ({ restaurantId, className, isTouch }) => {
     selectRestaurantProductsById(state, { id: restaurantId })
   );
 
-  console.log('productIds :>> ', productIds);
   return (
     <Menu productIds={productIds} className={className} isTouch={isTouch} />
   );

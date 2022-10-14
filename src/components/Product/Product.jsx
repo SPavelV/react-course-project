@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles.module.css';
 import classnames from 'classnames';
 
-export const Product = ({ name, price, className }) => {
+export const Product = ({ name, className }) => {
   if (!name) {
     return null;
   }

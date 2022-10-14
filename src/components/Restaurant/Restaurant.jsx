@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import { MenuWithMemo } from '../Menu/Menu';
 import { ReviewsWithMemo } from '../Reviews/Reviews';
@@ -6,8 +6,11 @@ import { RestaurantContentTabsWithMemo } from '../RestaurantContentTabs/Restaura
 import { MenuContainer } from '../../containers/Menu/MenuContainer';
 
 export const Restaurant = ({ id, name }) => {
-  const [currentTabIndex, setCurrentTabIndex] = useState();
-  console.log('currentTabIndex', currentTabIndex);
+  const [currentTabIndex, setCurrentTabIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentTabIndex(0);
+  }, [id]);
 
   // const average = Math.round(
   //   restaurant.reviews.reduce((sum, num) => (sum += num.rating), 0) /
