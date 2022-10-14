@@ -3,8 +3,12 @@ import styles from './styles.module.css';
 import { MenuWithMemo } from '../Menu/Menu';
 import { ReviewsWithMemo } from '../Reviews/Reviews';
 import { RestaurantContentTabsWithMemo } from '../RestaurantContentTabs/RestaurantContentTabs';
+import { MenuContainer } from '../../containers/Menu/MenuContainer';
 
-export const Restaurant = ({ name }) => {
+export const Restaurant = ({ id, name }) => {
+  const [currentTabIndex, setCurrentTabIndex] = useState();
+  console.log('currentTabIndex', currentTabIndex);
+
   // const average = Math.round(
   //   restaurant.reviews.reduce((sum, num) => (sum += num.rating), 0) /
   //     restaurant.reviews.length
@@ -12,16 +16,18 @@ export const Restaurant = ({ name }) => {
 
   return (
     <div className={styles.container}>
-      <div>{name}</div>
-      <RestaurantContentTabsWithMemo />
-      {/* {average && <div>Average: {average}</div>} */}
+      <div>Ресторан: {name}</div>
+      <RestaurantContentTabsWithMemo
+        onTabSelect={(index) => setCurrentTabIndex(index)}
+      />
+      {/* {average && <div>Average: {average}</div>}
+      <button onClick={() => setCount(count + 1)}>Rerender</button> */}
 
-      {/* <button onClick={() => setCount(count + 1)}>Rerender</button>
-
-      {restaurant.menu && (
-        <MenuWithMemo products={restaurant.menu} className={styles.menu} />
+      {currentTabIndex === 0 && (
+        <MenuContainer restaurantId={id} className={styles.menu} />
       )}
-      <div>
+      {currentTabIndex === 1 && 'Reviews'}
+      {/* <div>
         {restaurant.reviews && <ReviewsWithMemo reviews={restaurant.reviews} />}
       </div> */}
     </div>

@@ -12,5 +12,5 @@ export const RestaurantContainer = ({ id }) => {
     return null;
   }
 
-  return <Restaurant name={restaurant.name} />;
+  return <Restaurant id={id} name={restaurant.name} />;
 };
