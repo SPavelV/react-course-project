@@ -1,4 +1,4 @@
-import { normalizedProducts } from '../../constants/normalized-fixtures';
+import { normalizedProducts } from '../../../constants/normalized-fixtures';
 
 const initialState = {
   ids: normalizedProducts.map(({ id }) => id),

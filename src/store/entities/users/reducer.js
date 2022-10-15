@@ -1,4 +1,4 @@
-import { normalizedUsers } from '../../constants/normalized-fixtures';
+import { normalizedUsers } from '../../../constants/normalized-fixtures';
 
 const initialState = {
   id: normalizedUsers.map(({ id }) => id),

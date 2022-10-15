@@ -1,4 +1,4 @@
-import { normalizedReviews } from '../../constants/normalized-fixtures';
+import { normalizedReviews } from '../../../constants/normalized-fixtures';
 
 const initialState = {
   ids: normalizedReviews.map(({ id }) => id),

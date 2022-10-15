@@ -4,7 +4,7 @@ import { Restaurant } from '../../components/Restaurant/Restaurant';
 import {
   selectRestaurantById,
   selectRestaurantRating,
-} from '../../store/restaurant/selectors';
+} from '../../store/entities/restaurant/selectors';
 
 export const RestaurantContainer = ({ id }) => {
   const restaurant = useSelector((state) =>

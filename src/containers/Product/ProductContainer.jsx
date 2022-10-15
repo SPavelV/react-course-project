@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { ProductWithAuthorize } from '../../components/Product/ProductWithAuthorize';
-import { selectProductById } from '../../store/product/selectors';
+import { selectProductById } from '../../store/entities/product/selectors';
 
 export const ProductContainer = ({ id, className }) => {
   const product = useSelector((state) => selectProductById(state, { id }));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab } from '../../components/Tab/Tab';
 import { useSelector } from 'react-redux';
-import { selectRestaurantById } from '../../store/restaurant/selectors';
+import { selectRestaurantById } from '../../store/entities/restaurant/selectors';
 
 export const RestaurantTabContainer = ({ id, onTabSelect }) => {
   const restaurant = useSelector((state) =>

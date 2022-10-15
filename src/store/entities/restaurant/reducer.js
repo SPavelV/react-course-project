@@ -1,4 +1,4 @@
-import { normalizedRestaurants } from '../../constants/normalized-fixtures';
+import { normalizedRestaurants } from '../../../constants/normalized-fixtures';
 import { RESTAURANT_ACTIONS } from './actions';
 
 const initialState = {
@@ -9,7 +9,7 @@ const initialState = {
   }, {}),
 };
 
-export const restaurantReducer = (state = initialState, action) => {
+export const  restaurantReducer = (state = initialState, action) => {
   switch (action.type) {
     case RESTAURANT_ACTIONS.ADD_RESTAURANT: {
       return { restaurants: [...state.restaurants, action.payload] };

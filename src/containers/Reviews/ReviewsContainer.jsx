@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Reviews } from '../../components/Reviews/Reviews';
-import { selectRestaurantReviewsById } from '../../store/restaurant/selectors';
+import { selectRestaurantReviewsById } from '../../store/entities/restaurant/selectors';
 
 export const ReviewsContainer = ({ restaurantId, className }) => {
   const reviewIds = useSelector((state) =>

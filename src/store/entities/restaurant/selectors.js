@@ -1,7 +1,9 @@
 import { createSelector } from 'reselect';
-import { selectReviewById, selectReviewEntities } from '../review/selector';
+import { selectReviewEntities } from '../review/selector';
+import { selectEntitiesModule } from '../selectors';
 
-export const selectRestaurantModule = (state) => state.restaurant;
+export const selectRestaurantModule = (state) =>
+  selectEntitiesModule(state).restaurant;
 
 export const selectRestaurantIds = (state) =>
   selectRestaurantModule(state)?.ids;
