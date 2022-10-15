@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ReviewsWithMemo } from '../../components/Reviews/Reviews';
+import { Reviews } from '../../components/Reviews/Reviews';
 import { selectRestaurantReviewsById } from '../../store/restaurant/selectors';
 
 export const ReviewsContainer = ({ restaurantId, className }) => {
@@ -10,5 +10,5 @@ export const ReviewsContainer = ({ restaurantId, className }) => {
 
   if (!reviewIds) return null;
 
-  return <ReviewsWithMemo ids={reviewIds} className={className} />;
+  return <Reviews ids={reviewIds} className={className} />;
 };

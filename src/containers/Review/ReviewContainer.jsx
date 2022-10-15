@@ -7,6 +7,11 @@ export const ReviewContainer = ({ id }) => {
   const review = useSelector((state) => selectReviewById(state, { id }));
 
   return (
-    <Review userName={review.user} text={review.text} rating={review.rating} />
+    <Review
+      userName={review.user}
+      text={review.text}
+      rating={review.rating}
+      userId={review.userId}
+    />
   );
 };

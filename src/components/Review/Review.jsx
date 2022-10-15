@@ -2,14 +2,13 @@ import React from 'react';
 import styles from './styles.module.css';
 import classnames from 'classnames';
 import { StarRating } from '../StarRating/StarRating';
+import { UserContainer } from '../../containers/User/UserContainer';
 
-export const Review = ({ className, userName, text, rating }) => {
-  console.log('render Review');
-
+export const Review = ({ className, userId, text, rating }) => {
   return (
     <div className={classnames(styles.root, className)}>
       <div className={styles.user}>
-        <div className={styles.name}>User: {userName}</div>
+        <UserContainer id={userId} />
         rating
         <StarRating rating={rating} />
       </div>

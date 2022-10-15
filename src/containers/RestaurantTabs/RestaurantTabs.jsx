@@ -13,7 +13,7 @@ export const RestaurantTabsContainer = ({ onTabSelect }) => {
     <Tabs
       tabs={restaurantIds}
       renderTab={(id) => (
-        <RestaurantTabContainer id={id} onTabSelect={onTabSelect} />
+        <RestaurantTabContainer key={id} id={id} onTabSelect={onTabSelect} />
       )}
     />
   );

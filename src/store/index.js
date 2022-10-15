@@ -1,13 +1,15 @@
 import { createStore } from 'redux';
-import { restaurantReducer } from '../store/restaurant/reducer';
-import { productReducer } from '../store/product/reducer';
-import { reviewsReducer } from '../store/review/reducer';
+import { restaurantReducer } from './restaurant/reducer';
+import { productReducer } from './product/reducer';
+import { reviewsReducer } from './review/reducer';
+import { usersReducer } from './users/reducer';
 
 const rootReducer = (state = {}, action = {}) => {
   return {
     restaurant: restaurantReducer(state.restaurant, action),
     product: productReducer(state.product, action),
     reviews: reviewsReducer(state.reviews, action),
+    users: usersReducer(state.reviews, action),
   };
 };
 

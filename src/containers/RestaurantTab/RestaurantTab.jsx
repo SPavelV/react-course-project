@@ -9,5 +9,7 @@ export const RestaurantTabContainer = ({ id, onTabSelect }) => {
   );
 
   if (!restaurant) return null;
-  return <Tab name={restaurant.name} onClick={() => onTabSelect(id)} />;
+  return (
+    <Tab key={id} name={restaurant.name} onClick={() => onTabSelect(id)} />
+  );
 };
