@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
-import { MenuWithMemo } from '../Menu/Menu';
-import { ReviewsWithMemo } from '../Reviews/Reviews';
 import { RestaurantContentTabsWithMemo } from '../RestaurantContentTabs/RestaurantContentTabs';
 import { MenuContainer } from '../../containers/Menu/MenuContainer';
+import { ReviewsContainer } from '../../containers/Reviews/ReviewsContainer';
 
 export const Restaurant = ({ id, name }) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
@@ -29,10 +28,7 @@ export const Restaurant = ({ id, name }) => {
       {currentTabIndex === 0 && (
         <MenuContainer restaurantId={id} className={styles.menu} />
       )}
-      {currentTabIndex === 1 && 'Reviews'}
-      {/* <div>
-        {restaurant.reviews && <ReviewsWithMemo reviews={restaurant.reviews} />}
-      </div> */}
+      {currentTabIndex === 1 && <ReviewsContainer restaurantId={id} />}
     </div>
   );
 };
