@@ -1,5 +1,8 @@
 import { createSelector } from 'reselect';
-import { selectProductPriceById } from '../../entities/product/selectors';
+import {
+  selectProductEntities,
+  selectProductPriceById,
+} from '../../entities/product/selectors';
 import { selectUiModule } from '../selectors';
 
 export const selectBasketModule = (state) => selectUiModule(state)?.basket;
@@ -15,7 +18,13 @@ export const createSelectProductSum = () =>
   createSelector(
     [selectProductCount, selectProductPriceById],
     (count, price) => {
-      console.log('recalc ');
       return count * price;
     }
   );
+
+export const selectBasketSum = createSelector(
+  [selectBasketModule, selectProductIds, selectProductEntities],
+  (basket, ids, product) => {
+    return ids.reduce((sum, id) => (sum += basket[id] * product[id].price), 0);
+  }
+);

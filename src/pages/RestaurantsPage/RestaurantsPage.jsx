@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import { Layout } from '../../components/Layout/Layout';
-import { Restaurant } from '../../components/Restaurant/Restaurant';
-import { Tabs } from '../../components/Tabs/Tabs';
-import { useSelector } from 'react-redux';
-import { selectRestaurantIds } from '../../store/entities/restaurant/selectors';
 import styles from './styles.module.css';
 import { RestaurantTabsContainer } from '../../containers/RestaurantTabs/RestaurantTabs';
 import { RestaurantContainer } from '../../containers/Restaurant/RestaurantContainer';
+import { BasketContainer } from '../../containers/Basket/BasketContainer';
 
 export const RestaurantsPage = () => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState();
@@ -20,6 +17,7 @@ export const RestaurantsPage = () => {
         {!!currentRestaurantId && (
           <RestaurantContainer id={currentRestaurantId} />
         )}
+        <BasketContainer />
       </div>
     </Layout>
   );
