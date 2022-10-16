@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './styles.module.css';
 import classnames from 'classnames';
 import { ThemeContext } from '../../contexts/ThemeContext';
@@ -8,14 +8,10 @@ export const ProductWithSale = ({
   decrement,
   increment,
   name,
-  price,
   className,
+  sum,
 }) => {
   const { theme } = useContext(ThemeContext);
-
-  const totalPrice = useMemo(() => {
-    return count * price;
-  }, [count, price]);
 
   if (!name) {
     return null;
@@ -47,7 +43,7 @@ export const ProductWithSale = ({
           +
         </button>
       </div>
-      <span>{totalPrice} р.</span>
+      <span>{sum} р.</span>
     </div>
   );
 };

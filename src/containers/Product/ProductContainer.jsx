@@ -6,11 +6,20 @@ import {
   addProductToBasket,
   removeProductFromBasket,
 } from '../../store/ui/basket/actions';
-import { selectProductCount } from '../../store/ui/basket/selectors';
+import {
+  selectProductCount,
+  createSelectProductSum,
+} from '../../store/ui/basket/selectors';
 
 export const ProductContainer = ({ id, className }) => {
   const dispatch = useDispatch();
   const product = useSelector((state) => selectProductById(state, { id }));
+
+  const selectProductSum = useCallback(createSelectProductSum(), []);
+
+  const sum = useSelector((state) =>
+    selectProductSum(state, { productId: id })
+  );
 
   const productCount = useSelector((state) =>
     selectProductCount(state, { productId: id })
@@ -35,6 +44,7 @@ export const ProductContainer = ({ id, className }) => {
       decrement={decrement}
       increment={increment}
       count={productCount}
+      sum={sum}
     />
   );
 };
