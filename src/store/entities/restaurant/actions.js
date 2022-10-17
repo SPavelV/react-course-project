@@ -1,9 +1,13 @@
 export const RESTAURANT_ACTIONS = {
-  ADD_RESTAURANT: 'restaurant/ADD_RESTAURANT',
-  REMOVE_RESTAURANT: 'restaurant/REMOVE_RESTAURANT',
+  ADD_RESTAURANTS: 'restaurant/ADD_RESTAURANTS',
+  LOAD_RESTAURANTS: 'restaurant/LOAD_RESTAURANTS',
 };
 
-export const addRestaurant = (restaurant) => ({
-  type: RESTAURANT_ACTIONS.ADD_RESTAURANT,
-  payload: restaurant,
+export const addRestaurants = (restaurants) => ({
+  type: RESTAURANT_ACTIONS.ADD_RESTAURANTS,
+  payload: restaurants,
+});
+
+export const loadRestaurants = () => ({
+  type: RESTAURANT_ACTIONS.LOAD_RESTAURANTS,
 });
