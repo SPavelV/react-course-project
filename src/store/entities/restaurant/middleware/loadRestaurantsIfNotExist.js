@@ -4,11 +4,19 @@ import {
   RESTAURANT_ACTIONS,
   startLoading,
 } from '../actions';
+import { selectLoadingStatus, selectRestaurantIds } from '../selectors';
 
 export const loadRestaurantsIfNotExist =
   (store) => (next) => async (action) => {
     if (action.type !== RESTAURANT_ACTIONS.LOAD_RESTAURANTS) {
       return next(action);
+    }
+
+    if (
+      selectRestaurantIds(store.getState())?.length !== 0 ||
+      selectLoadingStatus(store.getState()) === 'inProgress'
+    ) {
+      return;
     }
 
     store.dispatch(startLoading());
