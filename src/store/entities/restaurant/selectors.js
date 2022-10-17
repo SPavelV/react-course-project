@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { selectReviewEntities } from '../review/selector';
+import { selectReviewEntities } from '../review/selectors';
 import { selectEntitiesModule } from '../selectors';
 
 export const selectRestaurantModule = (state) =>
