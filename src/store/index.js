@@ -1,16 +1,17 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { entitiesReducer } from './entities/reducer';
+import { loadRestaurantsIfNotExist } from './entities/restaurant/middleware/loadRestaurantsIfNotExist';
+import { logger } from './middleware/logger';
 import { uiReducer } from './ui/reducer';
 
 const rootReducer = (state = {}, action = {}) => {
-  console.log('action?.type', action?.type);
-  const newState = {
+  return {
     entities: entitiesReducer(state.entities, action),
     ui: uiReducer(state.ui, action),
   };
-
-  console.log('state :>> ', newState);
-  return newState;
 };
 
-export const store = createStore(rootReducer);
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(logger, loadRestaurantsIfNotExist)
+);
