@@ -1,10 +1,20 @@
 export const RESTAURANT_ACTIONS = {
-  ADD_RESTAURANTS: 'restaurant/ADD_RESTAURANTS',
+  START_LOADING: 'restaurant/START_LOADING',
+  FINISH_LOADING: 'restaurant/FINISH_LOADING',
+  FAILED_LOADING: 'restaurant/FAILED_LOADING',
   LOAD_RESTAURANTS: 'restaurant/LOAD_RESTAURANTS',
 };
 
-export const addRestaurants = (restaurants) => ({
-  type: RESTAURANT_ACTIONS.ADD_RESTAURANTS,
+export const startLoading = () => ({
+  type: RESTAURANT_ACTIONS.START_LOADING,
+});
+
+export const failedLoading = () => ({
+  type: RESTAURANT_ACTIONS.FAILED_LOADING,
+});
+
+export const finishLoading = (restaurants) => ({
+  type: RESTAURANT_ACTIONS.FINISH_LOADING,
   payload: restaurants,
 });
 

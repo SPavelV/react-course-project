@@ -3,8 +3,15 @@ import { RestaurantTabsContainer } from '../../containers/RestaurantTabs/Restaur
 import { RestaurantContainer } from '../../containers/Restaurant/RestaurantContainer';
 import { BasketContainer } from '../../containers/Basket/BasketContainer';
 
-export const Restaurants = () => {
+export const Restaurants = ({ status }) => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState();
+
+  if (status === 'inProgress') {
+    return <span>Loading...</span>;
+  }
+  if (status === 'failed') {
+    return <span>Failed.</span>;
+  }
 
   return (
     <div>

@@ -20,16 +20,6 @@ export const selectRestaurantReviewsById = (state, { id }) => {
   return selectRestaurantById(state, { id })?.reviews;
 };
 
-// export const selectRestaurantRating = (state, { id }) => {
-//   const reviewsIds = selectRestaurantReviewsById(state, { id });
-
-//   const reviews = reviewsIds.map((id) => selectReviewById(state, { id }));
-
-//   return Math.floor(
-//     reviews.reduce((sum, { rating }) => sum + rating, 0) / reviews.length
-//   );
-// };
-
 export const selectRestaurantRating = createSelector(
   [selectRestaurantReviewsById, selectReviewEntities],
   (reviewIds, reviewEntities) => {
@@ -39,3 +29,6 @@ export const selectRestaurantRating = createSelector(
     );
   }
 );
+
+export const selectLoadingStatus = (state) =>
+  selectRestaurantModule(state).status;
