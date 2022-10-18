@@ -21,7 +21,7 @@ export const loadReviewByRestaurantIdIfNotExist =
 
     const loadedReviewIds = selectReviewIds(store.getState());
 
-    if (restaurantReviewIds.every((id) => loadedReviewIds.includes(id))) {
+    if (restaurantReviewIds?.every((id) => loadedReviewIds.includes(id))) {
       return;
     }
 

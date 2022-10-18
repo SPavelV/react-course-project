@@ -12,7 +12,7 @@ export const BasketContainer = () => {
   const sum = useSelector(selectBasketSum);
   const dispatch = useDispatch();
 
-  const onClickClear = () => dispatch(cleanBasket());
+  const onClickClear = useCallback(() => dispatch(cleanBasket()), []);
 
   if (!productIds) return null;
 

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Menu } from '../../components/Menu/Menu';
 import { loadProducts } from '../../store/entities/product/actions';
 import { selectRestaurantProductsById } from '../../store/entities/restaurant/selectors';
-import { loadReviews } from '../../store/entities/review/actions';
 
 export const MenuContainer = ({ restaurantId, className, isTouch }) => {
   const dispatch = useDispatch();
@@ -14,10 +13,6 @@ export const MenuContainer = ({ restaurantId, className, isTouch }) => {
 
   useEffect(() => {
     dispatch(loadProducts(restaurantId));
-  }, [restaurantId]);
-
-  useEffect(() => {
-    dispatch(loadReviews(restaurantId));
   }, [restaurantId]);
 
   return (
