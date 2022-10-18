@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { loadProductsByProductIdIfNotExist } from './entities/product/middleware/loadProductsByRestaurantIdIfNotExist';
 import { entitiesReducer } from './entities/reducer';
 import { loadRestaurantsIfNotExist } from './entities/restaurant/middleware/loadRestaurantsIfNotExist';
@@ -14,13 +14,25 @@ const rootReducer = (state = {}, action = {}) => {
   };
 };
 
-export const store = createStore(
-  rootReducer,
-  applyMiddleware(
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: [
     logger,
     loadRestaurantsIfNotExist,
     loadProductsByProductIdIfNotExist,
     loadReviewByRestaurantIdIfNotExist,
-    loadUsersIfNotExist
-  )
-);
+    loadUsersIfNotExist,
+  ],
+  devTools: process.env.NODE_ENV !== 'production',
+});
+
+// export const store = createStore(
+//   rootReducer,
+//   applyMiddleware(
+//     logger,
+//     loadRestaurantsIfNotExist,
+//     loadProductsByProductIdIfNotExist,
+//     loadReviewByRestaurantIdIfNotExist,
+//     loadUsersIfNotExist
+//   )
+// );

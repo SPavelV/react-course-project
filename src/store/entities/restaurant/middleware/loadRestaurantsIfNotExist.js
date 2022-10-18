@@ -1,3 +1,4 @@
+import { restaurantActions, restaurantSlice } from '..';
 import {
   failedLoading,
   finishLoading,
@@ -19,20 +20,20 @@ export const loadRestaurantsIfNotExist =
       return;
     }
 
-    store.dispatch(startLoading());
+    store.dispatch(restaurantActions.startLoading());
 
     try {
       const response = await fetch('http://localhost:3001/api/restaurants');
       if (response.ok) {
         const restaurants = await response.json();
-        store.dispatch(finishLoading(restaurants));
+        store.dispatch(restaurantActions.finishLoading(restaurants));
       } else {
-        store.dispatch(failedLoading());
+        store.dispatch(restaurantActions.failedLoading());
         throw new Error(
           `Ошибка при запросе данных ресторана - ${response.status}`
         );
       }
     } catch (error) {
-      store.dispatch(failedLoading());
+      store.dispatch(restaurantActions.failedLoading());
     }
   };
