@@ -11,6 +11,7 @@ export const RestaurantContentTabs = ({ onTabSelect }) => {
       tabs={tabIndexes}
       renderTab={(index) => (
         <Tab
+          key={index}
           name={RESTAURANT_CONTENT_TABS[index]}
           onClick={() => onTabSelect(index)}
         />

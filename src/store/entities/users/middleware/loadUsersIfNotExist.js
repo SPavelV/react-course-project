@@ -4,7 +4,7 @@ import {
   USER_ACTIONS,
   startLoading,
 } from '../actions';
-import { selectLoadingStatus, selectReviewIds } from '../selectors';
+import { selectLoadingStatus, selectUserIds } from '../selectors';
 
 export const loadUsersIfNotExist = (store) => (next) => async (action) => {
   if (action.type !== USER_ACTIONS.LOAD_USERS) {
@@ -12,7 +12,7 @@ export const loadUsersIfNotExist = (store) => (next) => async (action) => {
   }
 
   if (
-    selectReviewIds(store.getState())?.length !== 0 ||
+    selectUserIds(store.getState())?.length !== 0 ||
     selectLoadingStatus(store.getState()) === 'inProgress'
   ) {
     return;
@@ -21,10 +21,10 @@ export const loadUsersIfNotExist = (store) => (next) => async (action) => {
   store.dispatch(startLoading());
 
   try {
-    const response = await fetch('http://localhost:3001/api/restaurants');
+    const response = await fetch('http://localhost:3001/api/users');
     if (response.ok) {
-      const restaurants = await response.json();
-      store.dispatch(finishLoading(restaurants));
+      const users = await response.json();
+      store.dispatch(finishLoading(users));
     } else {
       store.dispatch(failedLoading());
       throw new Error(

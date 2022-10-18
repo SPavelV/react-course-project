@@ -6,6 +6,8 @@ import { selectReviewById } from '../../store/entities/review/selectors';
 export const ReviewContainer = ({ id }) => {
   const review = useSelector((state) => selectReviewById(state, { id }));
 
+  if (!review) return null;
+
   return (
     <Review
       userName={review.user}

@@ -18,7 +18,7 @@ export const usersReducer = (state = initialState, action) => {
     case USER_ACTIONS.FINISH_LOADING: {
       const users = action.payload;
 
-      return {
+      const result = {
         ...state,
         entities: users.reduce((acc, current) => {
           acc[current.id] = current;
@@ -27,6 +27,8 @@ export const usersReducer = (state = initialState, action) => {
         ids: users.map((item) => item.id),
         status: 'success',
       };
+
+      return result;
     }
 
     case USER_ACTIONS.FAILED_LOADING:
