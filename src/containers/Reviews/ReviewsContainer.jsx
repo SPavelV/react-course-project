@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Reviews } from '../../components/Reviews/Reviews';
 import { selectRestaurantReviewsById } from '../../store/entities/restaurant/selectors';
-import { loadUsers } from '../../store/entities/users/actions';
+import { loadUsersIfNotExist } from '../../store/entities/users/thunks/loadUsersIfNotExist';
 
 export const ReviewsContainer = ({ restaurantId, className }) => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export const ReviewsContainer = ({ restaurantId, className }) => {
   );
 
   useEffect(() => {
-    dispatch(loadUsers());
+    dispatch(loadUsersIfNotExist());
   }, []);
 
   if (!reviewIds) return null;

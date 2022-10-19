@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { entitiesReducer } from './entities/reducer';
-import { loadUsersIfNotExist } from './entities/users/middleware/loadUsersIfNotExist';
 import { uiReducer } from './ui/reducer';
 
 const rootReducer = (state = {}, action = {}) => {
@@ -12,9 +11,6 @@ const rootReducer = (state = {}, action = {}) => {
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => [
-    ...getDefaultMiddleware(),
-    loadUsersIfNotExist,
-  ],
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware()],
   devTools: process.env.NODE_ENV !== 'production',
 });
