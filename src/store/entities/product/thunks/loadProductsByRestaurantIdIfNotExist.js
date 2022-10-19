@@ -1,6 +1,6 @@
 import { selectProductIds } from '../selectors';
 import { selectRestaurantProductsById } from '../../restaurant/selectors';
-import { failedLoading, finishLoading, startLoading } from '../actions';
+import { productsActions } from '..';
 
 export const loadProductsByProductIdIfNotExist =
   (restaurantId) => async (dispatch, getState) => {
@@ -16,7 +16,7 @@ export const loadProductsByProductIdIfNotExist =
       return;
     }
 
-    dispatch(startLoading());
+    dispatch(productsActions.startLoading());
 
     try {
       const response = await fetch(
@@ -24,15 +24,15 @@ export const loadProductsByProductIdIfNotExist =
       );
       if (response.ok) {
         const products = await response.json();
-        dispatch(finishLoading(products));
+        dispatch(productsActions.finishLoading(products));
       } else {
-        dispatch(failedLoading());
+        dispatch(productsActions.filedLoading());
         throw new Error(
           `Ошибка при запросе данных ресторана - ${response.status}`
         );
       }
     } catch (error) {
-      dispatch(failedLoading());
+      dispatch(productsActions.filedLoading());
       throw error;
     }
   };
