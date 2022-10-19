@@ -1,15 +1,9 @@
-import { restaurantActions, restaurantSlice } from '..';
-import {
-  failedLoading,
-  finishLoading,
-  RESTAURANT_ACTIONS,
-  startLoading,
-} from '../actions';
+import { restaurantActions } from '..';
 import { selectLoadingStatus, selectRestaurantIds } from '../selectors';
 
 export const loadRestaurantsIfNotExist =
   (store) => (next) => async (action) => {
-    if (action.type !== RESTAURANT_ACTIONS.LOAD_RESTAURANTS) {
+    if (action.type !== restaurantActions.loadRestaurants.type) {
       return next(action);
     }
 
