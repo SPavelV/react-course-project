@@ -1,7 +1,9 @@
 import { restaurantActions } from '..';
 import { selectLoadingStatus, selectRestaurantIds } from '../selectors';
 
-export const loadRestaurantsIfNotExist = () => async (dispatch, state) => {
+export const loadRestaurantsIfNotExist = () => async (dispatch, getState) => {
+  const state = getState();
+
   if (
     selectRestaurantIds(state)?.length !== 0 ||
     selectLoadingStatus(state) === 'inProgress'

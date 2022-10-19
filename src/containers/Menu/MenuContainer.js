@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Menu } from '../../components/Menu/Menu';
-import { loadProducts } from '../../store/entities/product/actions';
+import { loadProductsByProductIdIfNotExist } from '../../store/entities/product/thunks/loadProductsByRestaurantIdIfNotExist';
 import { selectRestaurantProductsById } from '../../store/entities/restaurant/selectors';
 
 export const MenuContainer = ({ restaurantId, className, isTouch }) => {
@@ -12,7 +12,7 @@ export const MenuContainer = ({ restaurantId, className, isTouch }) => {
   );
 
   useEffect(() => {
-    dispatch(loadProducts(restaurantId));
+    dispatch(loadProductsByProductIdIfNotExist(restaurantId));
   }, [restaurantId]);
 
   return (
