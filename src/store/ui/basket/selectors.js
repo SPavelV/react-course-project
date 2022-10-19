@@ -24,7 +24,7 @@ export const createSelectProductSum = () =>
 
 export const selectBasketSum = createSelector(
   [selectBasketModule, selectProductIds, selectProductEntities],
-  (basket, ids, product) => {
-    return ids.reduce((sum, id) => (sum += basket[id] * product[id].price), 0);
+  (basket, ids, products) => {
+    return ids.reduce((sum, id) => (sum += basket[id] * products[id].price), 0);
   }
 );

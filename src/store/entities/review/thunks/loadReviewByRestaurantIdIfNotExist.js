@@ -1,47 +1,38 @@
 import { selectReviewIds } from '../selectors';
 import { selectRestaurantReviewsById } from '../../restaurant/selectors';
-import {
-  failedLoading,
-  finishLoading,
-  REVIEW_ACTIONS,
-  startLoading,
-} from '../actions';
+import { reviewsActions } from '..';
 
 export const loadReviewByRestaurantIdIfNotExist =
-  (store) => (next) => async (action) => {
-    if (action.type !== REVIEW_ACTIONS.LOAD_REVIEWS) {
-      return next(action);
-    }
+  (restaurantId) => async (dispatch, getState) => {
+    const state = getState();
 
-    const restaurantId = action.payload;
-
-    const restaurantReviewIds = selectRestaurantReviewsById(store.getState(), {
+    const restaurantReviewIds = selectRestaurantReviewsById(state, {
       id: restaurantId,
     });
 
-    const loadedReviewIds = selectReviewIds(store.getState());
+    const loadedReviewIds = selectReviewIds(state);
 
     if (restaurantReviewIds?.every((id) => loadedReviewIds.includes(id))) {
       return;
     }
 
-    store.dispatch(startLoading());
+    dispatch(reviewsActions.startLoading());
 
     try {
       const response = await fetch(
-        `http://localhost:3001/api/reviews/?id=${action.payload}`
+        `http://localhost:3001/api/reviews/?id=${restaurantId}`
       );
       if (response.ok) {
         const products = await response.json();
-        store.dispatch(finishLoading(products));
+        dispatch(reviewsActions.finishLoading(products));
       } else {
-        store.dispatch(failedLoading());
+        dispatch(reviewsActions.filedLoading());
         throw new Error(
           `Ошибка при запросе данных ресторана - ${response.status}`
         );
       }
     } catch (error) {
-      store.dispatch(failedLoading());
+      dispatch(reviewsActions.filedLoading());
       throw error;
     }
   };

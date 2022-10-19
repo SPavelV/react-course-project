@@ -7,6 +7,7 @@ import {
   selectRestaurantById,
   selectRestaurantRating,
 } from '../../store/entities/restaurant/selectors';
+import { loadReviewByRestaurantIdIfNotExist } from '../../store/entities/review/thunks/loadReviewByRestaurantIdIfNotExist';
 
 export const RestaurantContainer = ({ id }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export const RestaurantContainer = ({ id }) => {
   const rating = useSelector((state) => selectRestaurantRating(state, { id }));
 
   useEffect(() => {
-    dispatch(loadReviews({ restaurantId: id }));
+    dispatch(loadReviewByRestaurantIdIfNotExist(id));
   }, [id]);
 
   if (!restaurant?.name) {

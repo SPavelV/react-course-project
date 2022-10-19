@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { entitiesReducer } from './entities/reducer';
-import { loadReviewByRestaurantIdIfNotExist } from './entities/review/middleware/loadReviewByRestaurantIdIfNotExist';
 import { loadUsersIfNotExist } from './entities/users/middleware/loadUsersIfNotExist';
 import { uiReducer } from './ui/reducer';
 
@@ -15,8 +14,6 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware(),
-    // customThunkMiddleware,
-    loadReviewByRestaurantIdIfNotExist,
     loadUsersIfNotExist,
   ],
   devTools: process.env.NODE_ENV !== 'production',
