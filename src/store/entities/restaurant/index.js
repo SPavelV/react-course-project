@@ -1,4 +1,4 @@
-import { createAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   ids: [],
@@ -43,10 +43,7 @@ export const restaurantSlice = createSlice({
   },
 });
 
-export const restaurantActions = {
-  ...restaurantSlice.actions,
-  loadRestaurants: createAction(`${sliceName}/LOAD_RESTAURANTS`),
-};
+export const restaurantActions = restaurantSlice.actions;
 
 // const testAction = createAction('testAction');
 
