@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Basket } from '../../components/Basket/Basket';
-import { cleanBasket } from '../../store/ui/basket/actions';
+import { basketActions } from '../../store/ui/basket';
 import {
   selectBasketSum,
   selectProductIds,
@@ -12,9 +12,7 @@ export const BasketContainer = () => {
   const sum = useSelector(selectBasketSum);
   const dispatch = useDispatch();
 
-  const onClickClear = useCallback(() => dispatch(cleanBasket()), []);
-
-  if (!productIds) return null;
+  const onClickClear = useCallback(() => dispatch(basketActions.clean()), []);
 
   return (
     <Basket productIds={productIds} sum={sum} onClickClear={onClickClear} />

@@ -47,3 +47,16 @@ export const restaurantActions = {
   ...restaurantSlice.actions,
   loadRestaurants: createAction(`${sliceName}/LOAD_RESTAURANTS`),
 };
+
+// const testAction = createAction('testAction');
+
+// const testReducer = createReducer({}, (builder) => {
+//   builder
+//     .addCase(testAction, (state, action) => {
+//       state.count = 56;
+//     })
+//     .addCase()
+//     .addCase()
+//     .addCase()
+//     .addDefaultCase();
+// });

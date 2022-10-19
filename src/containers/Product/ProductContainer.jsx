@@ -2,10 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductWithAuthorize } from '../../components/Product/ProductWithAuthorize';
 import { selectProductById } from '../../store/entities/product/selectors';
-import {
-  addProductToBasket,
-  removeProductFromBasket,
-} from '../../store/ui/basket/actions';
+import { basketActions } from '../../store/ui/basket';
 import {
   selectProductCount,
   createSelectProductSum,
@@ -26,12 +23,12 @@ export const ProductContainer = ({ id, className }) => {
   );
 
   const increment = useCallback(
-    () => dispatch(addProductToBasket({ productId: id })),
+    () => dispatch(basketActions.addProduct({ productId: id })),
     [id]
   );
 
   const decrement = useCallback(
-    () => dispatch(removeProductFromBasket({ productId: id })),
+    () => dispatch(basketActions.removeProduct({ productId: id })),
     [id]
   );
 

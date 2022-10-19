@@ -4,7 +4,6 @@ import { entitiesReducer } from './entities/reducer';
 import { loadRestaurantsIfNotExist } from './entities/restaurant/middleware/loadRestaurantsIfNotExist';
 import { loadReviewByRestaurantIdIfNotExist } from './entities/review/middleware/loadReviewByRestaurantIdIfNotExist';
 import { loadUsersIfNotExist } from './entities/users/middleware/loadUsersIfNotExist';
-import { logger } from './middleware/logger';
 import { uiReducer } from './ui/reducer';
 
 const rootReducer = (state = {}, action = {}) => {
@@ -17,7 +16,6 @@ const rootReducer = (state = {}, action = {}) => {
 export const store = configureStore({
   reducer: rootReducer,
   middleware: [
-    logger,
     loadRestaurantsIfNotExist,
     loadProductsByProductIdIfNotExist,
     loadReviewByRestaurantIdIfNotExist,
@@ -25,14 +23,3 @@ export const store = configureStore({
   ],
   devTools: process.env.NODE_ENV !== 'production',
 });
-
-// export const store = createStore(
-//   rootReducer,
-//   applyMiddleware(
-//     logger,
-//     loadRestaurantsIfNotExist,
-//     loadProductsByProductIdIfNotExist,
-//     loadReviewByRestaurantIdIfNotExist,
-//     loadUsersIfNotExist
-//   )
-// );

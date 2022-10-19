@@ -1,5 +1,5 @@
-import { basketReducer } from './basket/reducer';
+import { basketSlice } from './basket';
 
 export const uiReducer = (state = {}, action) => ({
-  basket: basketReducer(state.basket, action),
+  basket: basketSlice.reducer(state.basket, action),
 });

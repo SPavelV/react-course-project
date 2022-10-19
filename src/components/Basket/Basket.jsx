@@ -4,10 +4,10 @@ import styles from './styles.module.css';
 import { ProductContainer } from '../../containers/Product/ProductContainer';
 
 export const Basket = ({ productIds, sum, className, onClickClear }) => {
-  if (!productIds.length) return null;
-
   return (
     <div className={classnames(styles.root, className)}>
+      <h2>Корзина</h2>
+
       <div className={styles.products}>
         {productIds.map((id) => (
           <ProductContainer className={styles.product} key={id} id={id} />
