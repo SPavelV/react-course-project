@@ -8,6 +8,14 @@ export const selectRestaurantModule = (state) =>
 export const selectRestaurantIds = (state) =>
   selectRestaurantModule(state)?.ids;
 
+export const selectRestaurantName = (state, { name }) =>
+  selectRestaurantIds(state)?.filter(
+    (id) =>
+      selectRestaurantById(state, { id })
+        ?.name.toLowerCase()
+        .indexOf(name.toLowerCase()) !== -1
+  );
+
 export const selectRestaurantById = (state, { id }) => {
   return selectRestaurantModule(state)?.entities[id];
 };

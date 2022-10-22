@@ -1,20 +1,25 @@
 import React from 'react';
 import { Tabs } from '../../components/Tabs/Tabs';
 import { useSelector } from 'react-redux';
-import { selectRestaurantIds } from '../../store/entities/restaurant/selectors';
+import { selectRestaurantName } from '../../store/entities/restaurant/selectors';
 import { RestaurantTabContainer } from '../RestaurantTab/RestaurantTab';
+import { useSearchParams } from 'react-router-dom';
 
-export const RestaurantTabsContainer = ({ onTabSelect }) => {
-  const restaurantIds = useSelector(selectRestaurantIds);
+export const RestaurantTabsContainer = () => {
+  const [searchParams] = useSearchParams();
+
+  const restaurantIds = useSelector((state) =>
+    selectRestaurantName(state, {
+      name: searchParams.get('restaurantName') || '',
+    })
+  );
 
   if (!restaurantIds) return null;
 
   return (
     <Tabs
       tabs={restaurantIds}
-      renderTab={(id) => (
-        <RestaurantTabContainer key={id} id={id} onTabSelect={onTabSelect} />
-      )}
+      renderTab={(id) => <RestaurantTabContainer key={id} id={id} />}
     />
   );
 };

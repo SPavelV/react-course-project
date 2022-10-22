@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { RestaurantTabsContainer } from '../../containers/RestaurantTabs/RestaurantTabs';
 import { BasketContainer } from '../../containers/Basket/BasketContainer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useSearchParams } from 'react-router-dom';
 
 export const Restaurants = ({ status }) => {
-  const [currentRestaurantId, setCurrentRestaurantId] = useState();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   if (status === 'inProgress') {
     return <span>Loading...</span>;
@@ -15,9 +15,13 @@ export const Restaurants = ({ status }) => {
 
   return (
     <div>
-      <RestaurantTabsContainer
-        onTabSelect={(id) => setCurrentRestaurantId(id)}
+      <input
+        value={searchParams.get('restaurantName') || ''}
+        onChange={(event) =>
+          setSearchParams({ restaurantName: event.target.value })
+        }
       />
+      <RestaurantTabsContainer />
 
       <Outlet />
 
