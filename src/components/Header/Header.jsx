@@ -9,8 +9,8 @@ export const Header = () => {
       <button onClick={switchTheme} type='button'>
         SwitchTheme
       </button>
-      <Link to='/basket'>Basket</Link>
-      <Link to='/restaurants'>Restaurants</Link>
+      {/* <Link to='/basket'>Basket</Link> */}
+      {/* <Link to='/restaurants'>Restaurants</Link> */}
     </header>
   );
 };
