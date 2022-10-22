@@ -6,6 +6,7 @@ import { store } from './store';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BasketPage } from './pages/BasketPage/BasketPage';
 import { HomePage } from './pages/HomePage/HomePage';
+import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 export const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -24,9 +25,9 @@ export const App = () => {
         <BrowserRouter>
           <Routes>
             <Route index element={<HomePage />} />
-            <Route path='restaurant' element={<div>Restaurant</div>} />
             <Route path='restaurants' element={<RestaurantsPage />} />
             <Route path='basket' element={<BasketPage />} />
+            <Route path='*' element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
       </ThemeContext.Provider>
