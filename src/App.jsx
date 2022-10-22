@@ -32,7 +32,7 @@ export const App = () => {
             </Route>
             <Route path='basket' element={<BasketPage />} />
             <Route path='*' element={<NotFoundPage />} />
-          </Routes>
+          </Routes> 
         </BrowserRouter>
       </ThemeContext.Provider>
     </Provider>

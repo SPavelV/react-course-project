@@ -1,23 +1,13 @@
 import React from 'react';
-import { Tab } from '../../components/Tab/Tab';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/entities/restaurant/selectors';
-import { Link } from 'react-router-dom';
+import { RestaurantTab } from '../../components/RestaurantTab/RestaurantTab';
 
-export const RestaurantTabContainer = ({ id, onTabSelect }) => {
+export const RestaurantTabContainer = ({ id }) => {
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, { id })
   );
 
   if (!restaurant) return null;
-  return (
-    <Link to={id}>
-      <Tab
-        key={id}
-        name={restaurant.name}
-        id={id}
-        onClick={() => onTabSelect(id)}
-      />
-    </Link>
-  );
+  return <RestaurantTab id={id} restaurantName={restaurant.name} />;
 };
