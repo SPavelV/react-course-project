@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { RestaurantTabsContainer } from '../../containers/RestaurantTabs/RestaurantTabs';
-import { RestaurantContainer } from '../../containers/Restaurant/RestaurantContainer';
 import { BasketContainer } from '../../containers/Basket/BasketContainer';
+import { Outlet } from 'react-router-dom';
 
 export const Restaurants = ({ status }) => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState();
@@ -18,9 +18,9 @@ export const Restaurants = ({ status }) => {
       <RestaurantTabsContainer
         onTabSelect={(id) => setCurrentRestaurantId(id)}
       />
-      {!!currentRestaurantId && (
-        <RestaurantContainer id={currentRestaurantId} />
-      )}
+
+      <Outlet />
+
       <BasketContainer />
     </div>
   );

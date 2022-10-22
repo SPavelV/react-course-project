@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { BasketPage } from './pages/BasketPage/BasketPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
+import { RestaurantContainer } from './containers/Restaurant/RestaurantContainer';
 
 export const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -25,7 +26,10 @@ export const App = () => {
         <BrowserRouter>
           <Routes>
             <Route index element={<HomePage />} />
-            <Route path='restaurants' element={<RestaurantsPage />} />
+            <Route path='restaurants' element={<RestaurantsPage />}>
+              <Route index element={<div>Select restaurant</div>} />
+              <Route path=':restaurantId' element={<RestaurantContainer />} />
+            </Route>
             <Route path='basket' element={<BasketPage />} />
             <Route path='*' element={<NotFoundPage />} />
           </Routes>
@@ -34,3 +38,7 @@ export const App = () => {
     </Provider>
   );
 };
+
+// {!!currentRestaurantId && (
+//   <RestaurantContainer id={currentRestaurantId} />
+// )}

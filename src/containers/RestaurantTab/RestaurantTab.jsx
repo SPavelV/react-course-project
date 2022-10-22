@@ -2,6 +2,7 @@ import React from 'react';
 import { Tab } from '../../components/Tab/Tab';
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from '../../store/entities/restaurant/selectors';
+import { Link } from 'react-router-dom';
 
 export const RestaurantTabContainer = ({ id, onTabSelect }) => {
   const restaurant = useSelector((state) =>
@@ -10,6 +11,13 @@ export const RestaurantTabContainer = ({ id, onTabSelect }) => {
 
   if (!restaurant) return null;
   return (
-    <Tab key={id} name={restaurant.name} onClick={() => onTabSelect(id)} />
+    <Link to={id}>
+      <Tab
+        key={id}
+        name={restaurant.name}
+        id={id}
+        onClick={() => onTabSelect(id)}
+      />
+    </Link>
   );
 };

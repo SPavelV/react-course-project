@@ -23,8 +23,9 @@ export const selectRestaurantReviewsById = (state, { id }) => {
 export const selectRestaurantRating = createSelector(
   [selectRestaurantReviewsById, selectReviewEntities],
   (reviewIds, reviewEntities) => {
+    if (!reviewIds || !reviewEntities) return null;
     return Math.floor(
-      reviewIds.reduce((sum, id) => sum + reviewEntities[id]?.rating || 0, 0) /
+      reviewIds?.reduce((sum, id) => sum + reviewEntities[id]?.rating || 0, 0) /
         reviewIds.length
     );
   }
