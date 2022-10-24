@@ -16,8 +16,12 @@ export const selectRestaurantName = (state, { name }) =>
         .indexOf(name.toLowerCase()) !== -1
   );
 
+export const selectRestaurantEntities = (state) => {
+  return selectRestaurantModule(state)?.entities;
+};
+
 export const selectRestaurantById = (state, { id }) => {
-  return selectRestaurantModule(state)?.entities[id];
+  return selectRestaurantEntities(state)?.[id];
 };
 
 export const selectRestaurantProductsById = (state, { id }) => {
