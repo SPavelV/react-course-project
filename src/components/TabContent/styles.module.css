@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.menu,
+.reviews {
+  margin: 20px 0;
+}

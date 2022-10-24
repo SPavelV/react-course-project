@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Tab } from '../Tab/Tab';
 import styles from './styles.module.css';
 
-export const RestaurantTab = ({ id, restaurantName }) => {
+export const RestaurantTab = ({ id, name }) => {
   return (
     <NavLink
       to={id}
@@ -14,7 +14,7 @@ export const RestaurantTab = ({ id, restaurantName }) => {
         })
       }
     >
-      <Tab name={restaurantName} id={id} />
+      <Tab name={name} id={id} />
     </NavLink>
   );
 };

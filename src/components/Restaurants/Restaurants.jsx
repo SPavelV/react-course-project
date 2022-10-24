@@ -21,6 +21,7 @@ export const Restaurants = ({ status }) => {
           setSearchParams({ restaurantName: event.target.value })
         }
       />
+
       <RestaurantTabsContainer />
 
       <Outlet />

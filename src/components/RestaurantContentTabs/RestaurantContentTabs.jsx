@@ -1,19 +1,19 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Tabs } from '../Tabs/Tabs';
-import { Tab } from '../Tab/Tab';
+import { RestaurantTab } from '../RestaurantTab/RestaurantTab';
 import { RESTAURANT_CONTENT_TABS } from './constants';
 
-export const RestaurantContentTabs = ({ onTabSelect }) => {
+export const RestaurantContentTabs = () => {
   const tabIndexes = RESTAURANT_CONTENT_TABS.map((_, i) => i);
 
   return (
     <Tabs
       tabs={tabIndexes}
       renderTab={(index) => (
-        <Tab
+        <RestaurantTab
           key={index}
+          id={`${index}`}
           name={RESTAURANT_CONTENT_TABS[index]}
-          onClick={() => onTabSelect(index)}
         />
       )}
     />

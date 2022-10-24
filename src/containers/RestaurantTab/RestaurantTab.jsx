@@ -9,5 +9,5 @@ export const RestaurantTabContainer = ({ id }) => {
   );
 
   if (!restaurant) return null;
-  return <RestaurantTab id={id} restaurantName={restaurant.name} />;
+  return <RestaurantTab id={id} name={restaurant.name} />;
 };

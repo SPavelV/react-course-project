@@ -8,6 +8,7 @@ import { BasketPage } from './pages/BasketPage/BasketPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { RestaurantContainer } from './containers/Restaurant/RestaurantContainer';
+import { TabContent } from './components/TabContent/TabContent';
 
 export const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -28,11 +29,14 @@ export const App = () => {
             <Route index element={<HomePage />} />
             <Route path='restaurants' element={<RestaurantsPage />}>
               <Route index element={<div>Select restaurant</div>} />
-              <Route path=':restaurantId' element={<RestaurantContainer />} />
+              <Route path=':restaurantId' element={<RestaurantContainer />}>
+                <Route index element={<div>Select content</div>} />
+                <Route path=':tabId' element={<TabContent />} />
+              </Route>
             </Route>
             <Route path='basket' element={<BasketPage />} />
             <Route path='*' element={<NotFoundPage />} />
-          </Routes> 
+          </Routes>
         </BrowserRouter>
       </ThemeContext.Provider>
     </Provider>
