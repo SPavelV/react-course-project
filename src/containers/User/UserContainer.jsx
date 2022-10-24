@@ -6,6 +6,8 @@ import { selectUserById } from '../../store/entities/users/selectors';
 export const UserContainer = ({ id }) => {
   const user = useSelector((state) => selectUserById(state, { id }));
 
+  const onClick = (userName) => console.log('userName :>> ', userName);
+
   if (!user) return null;
-  return <User name={user.name} />;
+  return <User name={user.name} onClick={onClick} />;
 };

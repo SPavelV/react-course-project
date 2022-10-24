@@ -1,5 +1,9 @@
 import React from 'react';
 
-export const User = ({ name }) => {
-  return <div>User name: {name}</div>;
+export const User = ({ name, onClick }) => {
+  return (
+    <div>
+      {name} <button onClick={() => onClick(name)}>clickMe</button>
+    </div>
+  );
 };
