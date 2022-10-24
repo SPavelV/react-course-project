@@ -1,12 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Product } from '../../components/Product/Product';
-import { selectDishById } from '../../store/entities/dishes/selectors';
+import { Dish } from '../../components/Dish/Dish';
+import {
+  selectDishById,
+  selectLoadingStatus,
+} from '../../store/entities/dishes/selectors';
 
-export const DishContainer = ({ id, className }) => {
+export const DishContainer = ({ id }) => {
   const dish = useSelector((state) => selectDishById(state, { id }));
+  const status = useSelector(selectLoadingStatus);
 
-  if (!dish) return null;
+  if (status === 'inProgress') {
+    return <span>Loading...</span>;
+  }
+  if (status === 'failed') {
+    return <span>Failed.</span>;
+  }
 
-  return <Product name={dish.name} />;
+  return (
+    <Dish
+      name={dish?.name}
+      ingredients={dish?.ingredients}
+      price={dish?.price}
+    />
+  );
 };

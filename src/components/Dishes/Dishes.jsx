@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-import { DishContainer } from '../../containers/Dish/DishContainer';
+import { DishLinkContainer } from '../../containers/DishLink/DishLinkContainer';
 import { selectDishesIdsFilteredByName } from '../../store/entities/dishes/selectors';
 import styles from './styles.module.css';
 
@@ -34,7 +34,7 @@ export const Dishes = ({ status }) => {
         onChange={onChangeInput}
       />
       {searchDishesIds &&
-        searchDishesIds.map((id) => <DishContainer key={id} id={id} />)}
+        searchDishesIds.map((id) => <DishLinkContainer key={id} id={id} />)}
     </div>
   );
 };
