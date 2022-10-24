@@ -1,11 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { DishContainer } from '../../containers/Dish/DishContainer';
-import { selectDishesIds } from '../../store/entities/dishes/selectors';
+import { selectDishesIdsFilteredByName } from '../../store/entities/dishes/selectors';
 import styles from './styles.module.css';
 
 export const Dishes = ({ status }) => {
-  const dishesIds = useSelector(selectDishesIds);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchDishesIds = useSelector((state) =>
+    selectDishesIdsFilteredByName(state, {
+      name: searchParams.get('productName'),
+    })
+  );
+
+  const onChangeInput = (event) => {
+    setSearchParams({ productName: event.target.value });
+  };
+
   if (status === 'inProgress') {
     return <span>Loading...</span>;
   }
@@ -16,9 +28,13 @@ export const Dishes = ({ status }) => {
   return (
     <div className={styles.root}>
       <h2>Dish list: </h2>
-      {dishesIds.map((id) => (
-        <DishContainer key={id} id={id} />
-      ))}
+
+      <input
+        value={searchParams.get('productName') || ''}
+        onChange={onChangeInput}
+      />
+      {searchDishesIds &&
+        searchDishesIds.map((id) => <DishContainer key={id} id={id} />)}
     </div>
   );
 };
