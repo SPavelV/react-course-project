@@ -3,14 +3,15 @@ import { RestaurantsPage } from './pages/RestaurantsPage/RestaurantsPage';
 import { ThemeContext } from './contexts/ThemeContext';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { BasketPage } from './pages/BasketPage/BasketPage';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { RestaurantContainer } from './containers/Restaurant/RestaurantContainer';
-import { TabContent } from './components/TabContent/TabContent';
 import { DishesPage } from './pages/DishesPage/DishesPage';
 import { DishPage } from './pages/DishPage/DishPage';
+import { MenuContainer } from './containers/Menu/MenuContainer';
+import { ReviewsContainer } from './containers/Reviews/ReviewsContainer';
 
 export const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -32,8 +33,9 @@ export const App = () => {
             <Route path='restaurants' element={<RestaurantsPage />}>
               <Route index element={<div>Select restaurant</div>} />
               <Route path=':restaurantId' element={<RestaurantContainer />}>
-                <Route index element={<div>Select content</div>} />
-                <Route path=':tabId' element={<TabContent />} />
+                <Route index element={<Navigate to='menu' replace />} />
+                <Route path='menu' element={<MenuContainer />} />
+                <Route path='reviews' element={<ReviewsContainer />} />
               </Route>
             </Route>
             <Route path='basket' element={<BasketPage />} />

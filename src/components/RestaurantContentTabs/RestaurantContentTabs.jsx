@@ -12,7 +12,7 @@ export const RestaurantContentTabs = () => {
       renderTab={(index) => (
         <RestaurantTab
           key={index}
-          id={`${index}`}
+          id={`${RESTAURANT_CONTENT_TABS[index]}`}
           name={RESTAURANT_CONTENT_TABS[index]}
         />
       )}

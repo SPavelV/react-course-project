@@ -11,3 +11,4 @@ export const RestaurantLinkContainer = ({ id }) => {
   if (!restaurant) return null;
   return <Link to={`/restaurants/${id}`}>{restaurant.name}</Link>;
 };
+ 
