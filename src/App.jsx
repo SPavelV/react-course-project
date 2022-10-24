@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { RestaurantContainer } from './containers/Restaurant/RestaurantContainer';
 import { TabContent } from './components/TabContent/TabContent';
+import { DishesPage } from './pages/DishesPage/DishesPage';
 
 export const App = () => {
   const [theme, setTheme] = useState('dark');
@@ -35,6 +36,7 @@ export const App = () => {
               </Route>
             </Route>
             <Route path='basket' element={<BasketPage />} />
+            <Route path='dishes' element={<DishesPage />} />
             <Route path='*' element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>

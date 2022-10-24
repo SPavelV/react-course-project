@@ -11,6 +11,7 @@ export const Header = () => {
       </button>
       <Link to='/basket'>Basket</Link>
       <Link to='/restaurants'>Restaurants</Link>
+      <Link to='/dishes'>All dishes</Link>
     </header>
   );
 };
